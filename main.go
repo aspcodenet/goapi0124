@@ -13,5 +13,5 @@ func main() {
 		City: "Test",
 		Namn: "Oliver",
 	}
-	fmt.Printf("Hello %v\n", emp)
+	fmt.Printf("Hello %v", emp)
 }
