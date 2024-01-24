@@ -13,5 +13,9 @@ func main() {
 		City: "Test",
 		Namn: "Oliver",
 	}
-	fmt.Printf("Hello %v", emp)
+	//	salary := data.CalculateSalary(emp)
+	salary := emp.CalculateSalary()
+
+	//emp.CalculateSalary();
+	fmt.Printf("Hello %v %v", emp, salary)
 }
