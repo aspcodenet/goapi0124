@@ -63,10 +63,10 @@ func apiEmployeeById(c *gin.Context) {
 func apiEmployeeUpdate(c *gin.Context) {
 	id := c.Param("id")
 
-	for _, emp := range employees {
+	for index, emp := range employees {
 		i, _ := strconv.Atoi(id)
 		if emp.Id == i {
-			c.BindJSON(&emp)
+			c.BindJSON(&employees[index])
 			c.JSON(http.StatusOK, emp)
 		}
 	}
