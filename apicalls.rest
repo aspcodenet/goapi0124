@@ -1,0 +1,29 @@
+### Get all
+GET http://localhost:8080/api/employee
+
+
+### Get single
+GET http://localhost:8080/api/employee/1
+
+### Create new
+POST http://localhost:8080/api/employee
+Content-Type: application/json
+
+{
+    "Age":51,
+    "City":"Nacka",
+    "Namn": "Kalle"
+}
+
+
+### Update existing
+PUT http://localhost:8080/api/employee/2
+Content-Type: application/json
+
+{
+    "Age":51,
+    "City":"Stockholm",
+    "Namn": "Stefan"
+}
+
+
