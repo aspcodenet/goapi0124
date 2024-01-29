@@ -75,18 +75,19 @@ func apiEmployeeUpdate(c *gin.Context) {
 }
 
 func main() {
-	employees = append(employees, data.Employee{
-		Id:   1,
-		Age:  15,
-		City: "Stockholm",
-		Namn: "Oliver",
-	})
-	employees = append(employees, data.Employee{
-		Id:   2,
-		Age:  51,
-		City: "Stockholm",
-		Namn: "Stefam",
-	})
+	data.Init()
+	// employees = append(employees, data.Employee{
+	// 	Id:   1,
+	// 	Age:  15,
+	// 	City: "Stockholm",
+	// 	Namn: "Oliver",
+	// })
+	// employees = append(employees, data.Employee{
+	// 	Id:   2,
+	// 	Age:  51,
+	// 	City: "Stockholm",
+	// 	Namn: "Stefam",
+	// })
 
 	router := gin.Default()
 	router.GET("/api/employee", apiEmployee)
