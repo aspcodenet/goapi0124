@@ -12,18 +12,18 @@ Content-Type: application/json
 {
     "Age":51,
     "City":"Nacka",
-    "Namn": "Kalle"
+    "Namn": "Nisse"
 }
 
 
 ### Update existing
-PUT http://localhost:8080/api/employee/2
+PUT http://localhost:8080/api/employee/4
 Content-Type: application/json
 
 {
     "Age":51,
-    "City":"Stockholm",
-    "Namn": "Stefan"
+    "City":"Stockholm2",
+    "Namn": "Nisse2"
 }
 
 
