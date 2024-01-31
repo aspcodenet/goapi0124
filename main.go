@@ -1,5 +1,13 @@
 package main
 
+// 1. När vi kör lokalt utvecklar så SqLite
+//						en setting är ju filnamnet
+// 2. kör i Kubernetes (prod) så MySQL -
+//				servernnamnet, port, databasen, anvnamn, lösenord
+//                   kubernetes SECRETS !!!
+
+// möjlighet ar override:a med environmentvariabler
+
 import (
 	"errors"
 	"net/http"
