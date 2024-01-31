@@ -67,8 +67,16 @@ func apiEmployeeUpdate(c *gin.Context) {
 	}
 }
 
+var config Config
+
 func main() {
-	data.Init()
+	readConfig(&config)
+	data.Init(config.Database.File,
+		config.Database.Server,
+		config.Database.Database,
+		config.Database.Username,
+		config.Database.Password,
+		config.Database.Port)
 	// employees = append(employees, data.Employee{
 	// 	Id:   1,
 	// 	Age:  15,

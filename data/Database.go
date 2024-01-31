@@ -1,17 +1,36 @@
 package data
 
 import (
+	"fmt"
+
 	"github.com/glebarez/sqlite"
+	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
 
 var DB *gorm.DB
 
-func Init() {
-	DB, _ = gorm.Open(sqlite.Open("databasen.sqlite"), &gorm.Config{})
+func openMySql(server, database, username, password string, port int) *gorm.DB {
+	var url string
+	url = fmt.Sprintf("%s:%s@tcp(%s:%d)/%s?charset=utf8mb4&parseTime=True&loc=Local",
+		username, password, server, port, database)
+
+	db, err := gorm.Open(mysql.Open(url), &gorm.Config{})
+	if err != nil {
+		panic("failed to connect database")
+	}
+	return db
+}
+
+func Init(file, server, database, username, password string, port int) {
+	if len(file) == 0 {
+		DB = openMySql(server, database, username, password, port)
+	} else {
+		DB, _ = gorm.Open(sqlite.Open(file), &gorm.Config{})
+	}
 	DB.AutoMigrate(&Employee{})
 	var antal int64
-	DB.Model(&Employee{}).Count(&antal) // Seed SELECT COUNT(*) FROM Employee
+	DB.Model(&Employee{}).Count(&antal) // Seed
 	if antal == 0 {
 		DB.Create(&Employee{Age: 50, Namn: "Stefan", City: "Test"})
 		DB.Create(&Employee{Age: 14, Namn: "Oliver", City: "Test"})
